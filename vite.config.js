@@ -5,8 +5,8 @@ import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vite.dev/config/
-export default defineConfig({
-  base: process.env.NODE_ENV === 'production' ? '/vue-sfc/' : '/',
+export default defineConfig(({ mode }) => ({
+  base: mode === 'production' ? '/vue-sfc/' : '/',
   plugins: [
     vue(),
     vueDevTools(),
@@ -16,4 +16,4 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     },
   },
-})
+}))
